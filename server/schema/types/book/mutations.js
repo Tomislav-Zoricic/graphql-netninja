@@ -22,6 +22,30 @@ const addBook = {
   }
 }
 
+const updateBook = {
+  type: BookType,
+  args: {
+    id: { type: new GraphQLNonNull(GraphQLString) },
+    name: { type: new GraphQLNonNull(GraphQLString) }
+  },
+  resolve(parent, { id, name }) {
+    // returning null
+    return BookModel.update({ _id: id }, { $set: { name }});
+  }
+}
+
+const deleteBook = {
+  type: BookType,
+  args: {
+    id: { type: new GraphQLNonNull(GraphQLString) }
+  },
+  resolve(parent, { id }) {
+    return BookModel.findByIdAndRemove(id);
+  }
+}
+
 module.exports = {
-  addBook
+  addBook,
+  updateBook,
+  deleteBook
 }
