@@ -6,7 +6,6 @@ const { GraphQLObjectType,
       } = require('graphql');
 
 const BookType = require('./index');
-const { books , authors } = require('../../../data');
 const BookModel = require('../../../mongoose/book');
 
 const addBook = {

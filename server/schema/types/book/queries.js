@@ -1,12 +1,12 @@
-const { GraphQLList, GraphQLString } = require('graphql');
+const { GraphQLList, GraphQLID } = require('graphql');
 const BookType = require('./index');
 const BookModel = require('../../../mongoose/book');
 
 const book = {
   type: BookType,
-  args: { name: { type: GraphQLString } },
-  resolve(parent, args) {
-    return BookModel.findOne({ name: args.name });
+  args: { id: { type: GraphQLID } },
+  resolve(parent, { id }) {
+    return BookModel.findById(id);
   }
 }
 

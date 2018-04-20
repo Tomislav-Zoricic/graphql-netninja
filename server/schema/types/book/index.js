@@ -3,20 +3,18 @@ const { GraphQLObjectType,
         GraphQLString
       } = require('graphql');
 
-const _ = require('lodash');
-const { authors: authorsData } = require('../../../data');
-
+const AuthorModel = require('../../../mongoose/author');
 const BookType = new GraphQLObjectType({
   name: 'Book',
   fields: () => ({
-      id: { type: GraphQLString },
+      id: { type: GraphQLID },
       name: { type: GraphQLString },
       genre: { type: GraphQLString },
       authorId: { type: GraphQLString },
       author: {
         type: require('../author'),
         resolve(parent, args) {
-          return _.find(authorsData, { id: parent.authorId });
+          return AuthorModel.findById(parent.authorId);
         }
       }
   })

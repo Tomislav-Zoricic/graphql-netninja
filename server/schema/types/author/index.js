@@ -5,13 +5,12 @@ const { GraphQLObjectType,
         GraphQLList
       } = require('graphql');
 
-const { books: data } = require('../../../data');
 const BookModel = require('../../../../server/mongoose/book');
 
 const AuthorType = new GraphQLObjectType({
   name: 'Author',
   fields: () => ({
-    id: { type: GraphQLString },
+    id: { type: GraphQLID },
     name: { type: GraphQLString },
     age: { type: GraphQLInt },
     books: {

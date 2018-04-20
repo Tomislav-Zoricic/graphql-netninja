@@ -1,12 +1,12 @@
-const { GraphQLList, GraphQLString } = require('graphql');
+const { GraphQLList, GraphQLID } = require('graphql');
 const AuthorType = require('./index');
 const AuthorModel = require('../../../mongoose/author');
 
 const author = {
   type: AuthorType,
-  args: { name: { type: GraphQLString } },
-  resolve(parent, args) {
-    return AuthorModel.findOne({ name: args.name });
+  args: { id: { type: GraphQLID } },
+  resolve(parent, { id }) {
+    return AuthorModel.findById(id);
   }
 }
 
