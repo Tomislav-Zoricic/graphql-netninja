@@ -8,16 +8,16 @@ const book = {
   resolve(parent, { id }) {
     return BookModel.findById(id);
   }
-}
+};
 
 const books = {
   type: new GraphQLList(BookType),
   resolve(parent, args) {
     return BookModel.find({});
   }
-}
+};
 
 module.exports = {
   book,
   books
-}
+};

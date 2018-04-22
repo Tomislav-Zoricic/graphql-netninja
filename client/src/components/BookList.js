@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import { bookQueries } from '../queries';
 
@@ -11,7 +12,9 @@ class BookList extends Component {
 
     return data.books.map(book => {
       return (
-        <li key={book.id}>{book.name}</li>
+        <li key={book.id}>
+          <Link to={`/book/${book.id}`}>{book.name}</Link>
+        </li>
       )
     });
   }

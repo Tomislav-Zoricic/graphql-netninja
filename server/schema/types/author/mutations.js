@@ -1,8 +1,5 @@
-const { GraphQLObjectType,
-        GraphQLID,
-        GraphQLString,
+const { GraphQLString,
         GraphQLInt,
-        GraphQLNonNull
       } = require('graphql');
 
 const AuthorType = require('./index');
@@ -18,8 +15,8 @@ const addAuthor = {
     const newAuthor = new AuthorModel({ name, age });
     return newAuthor.save();
   }
-}
+};
 
 module.exports = {
   addAuthor
-}
+};
